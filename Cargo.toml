@@ -1,0 +1,30 @@
+[package]
+name = "bucket-search"
+version = "0.1.0"
+edition = "2021"
+authors = ["bucket-search contributors"]
+description = "High-performance 3D spatial indexing with bucket search algorithm"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/rndubs/bucket-search"
+readme = "README.md"
+
+[lib]
+name = "bucket_search"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+ndarray = "0.15"
+pyo3 = { version = "0.20", features = ["extension-module"], optional = true }
+numpy = { version = "0.20", optional = true }
+
+[features]
+default = ["python"]
+python = ["pyo3", "numpy"]
+
+[dev-dependencies]
+criterion = "0.5"
+approx = "0.5"
+
+[[bench]]
+name = "pointbin_bench"
+harness = false
