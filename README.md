@@ -7,6 +7,50 @@
 
 A high-performance 3D spatial indexing library for efficient radius-based searches, implemented in Rust with Python bindings.
 
+## Building the Python Wheel
+
+### Prerequisites
+
+- Rust 1.70+ ([Install](https://rustup.rs/))
+- Python 3.8+
+- `uv` for Python package management ([Install](https://docs.astral.sh/uv/getting-started/installation/))
+
+### Build Instructions
+
+```bash
+# Clone the repository
+git clone https://github.com/rndubs/bucket-search.git
+cd bucket-search
+
+# Install uv (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install dependencies
+uv sync
+
+# Build the wheel
+uv build
+
+# The wheel will be created in the dist/ directory
+# Install it with: pip install dist/bucket_search-*.whl
+```
+
+### Development Build
+
+For development with editable installation:
+
+```bash
+# Build and install in development mode
+uv run maturin develop --release
+
+# Run tests
+cargo test          # Rust tests
+uv run pytest       # Python tests
+
+# Run benchmarks
+cargo bench
+```
+
 ## Features
 
 - **⚡ Blazingly Fast**: Rust implementation with cache-optimized data structures
@@ -21,7 +65,11 @@ A high-performance 3D spatial indexing library for efficient radius-based search
 ### From PyPI (Recommended)
 
 ```bash
+# Using pip
 pip install bucket-search
+
+# Or using uv
+uv add bucket-search
 ```
 
 ### From Source
@@ -29,11 +77,11 @@ pip install bucket-search
 Requirements: Rust 1.70+ and Python 3.8+
 
 ```bash
-# Install maturin
-pip install maturin
+# Install uv (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Build and install
-maturin develop --release
+uv run maturin develop --release
 ```
 
 ## Quick Start
@@ -182,36 +230,7 @@ The Rust implementation provides significant speedups over pure Python implement
 
 ## Development
 
-### Prerequisites
-
-- Rust 1.70+ ([Install](https://rustup.rs/))
-- Python 3.8+
-- `uv` or `pip` for Python package management
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/rndubs/bucket-search.git
-cd bucket-search
-
-# Create a virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-
-# Install dependencies
-pip install maturin pytest numpy
-
-# Build and install in development mode
-maturin develop
-
-# Run tests
-cargo test  # Rust tests
-pytest      # Python tests
-
-# Run benchmarks
-cargo bench
-```
+See the [Building the Python Wheel](#building-the-python-wheel) section above for setup instructions.
 
 ### Project Structure
 

@@ -171,9 +171,9 @@ bucket-search/
 - [ ] Create `.gitignore` for Rust/Python artifacts
 - [ ] Document development setup in README
 - [ ] Create development scripts:
-  - Build: `maturin develop` for local testing
-  - Test: run both Rust and Python tests
-  - Benchmark: run performance tests
+  - Build: `uv run maturin develop` for local testing
+  - Test: run both Rust and Python tests with `cargo test` and `uv run pytest`
+  - Benchmark: run performance tests with `cargo bench`
 
 ### 4.2 GitHub Actions CI Workflow
 - [ ] Set up matrix testing:
@@ -213,7 +213,7 @@ bucket-search/
 
 ### 5.1 Documentation
 - [ ] Write comprehensive README.md:
-  - Installation instructions (`pip install bucket-search`)
+  - Installation instructions (`pip install bucket-search` or `uv add bucket-search`)
   - Quick start example
   - API reference
   - Performance benchmarks
