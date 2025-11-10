@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# Added by cargo
+
+/target
+.venv/
+target/
+*.pyc
+__pycache__/
+*.so
+*.whl
+.pytest_cache/

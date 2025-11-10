@@ -27,16 +27,16 @@ bucket-search/
 
 ---
 
-## Phase 1: Rust Core Implementation
+## Phase 1: Rust Core Implementation ✅
 **Goal:** Implement the spatial indexing data structure in pure Rust
 
 ### 1.1 Project Setup
-- [ ] Initialize Rust project with `cargo init --lib`
-- [ ] Configure `Cargo.toml` with dependencies (ndarray for array operations)
-- [ ] Set up workspace structure
+- [x] Initialize Rust project with `cargo init --lib`
+- [x] Configure `Cargo.toml` with dependencies (ndarray for array operations)
+- [x] Set up workspace structure
 
 ### 1.2 Core Data Structures
-- [ ] Implement `PointBin3D` struct with required fields:
+- [x] Implement `PointBin3D` struct with required fields:
   - `original_points`: 2D array of f64
   - `points`: Cache-friendly sorted copy
   - `bin_widths`: 1D array of f64
@@ -50,75 +50,75 @@ bucket-search/
   - `found_indices` and `found_count`
 
 ### 1.3 Utility Functions
-- [ ] Implement `min_along_axis0` (column-wise minimum)
-- [ ] Implement `max_along_axis0` (column-wise maximum)
-- [ ] Helper functions for spatial operations
+- [x] Implement `min_along_axis0` (column-wise minimum)
+- [x] Implement `max_along_axis0` (column-wise maximum)
+- [x] Helper functions for spatial operations
 
 ### 1.4 Core Methods
-- [ ] Implement `new()` constructor:
+- [x] Implement `new()` constructor:
   - Compute bin indices from points
   - Sort points by bin for cache efficiency
   - Build linked list structure
   - Store original state for reset
-- [ ] Implement `radius_search()`:
+- [x] Implement `radius_search()`:
   - Calculate bounding box in bin coordinates
   - Iterate over intersecting bins
   - Check distances using vectorized operations
   - Remove found points from linked list
   - Track found indices
-- [ ] Implement `found_indices()`:
+- [x] Implement `found_indices()`:
   - Map sorted indices back to original indices
-- [ ] Implement `reset()`:
+- [x] Implement `reset()`:
   - Restore original linked list structure
   - Clear found indices
 
 ### 1.5 Rust Testing
-- [ ] Write unit tests for utility functions
-- [ ] Write integration tests matching Python test cases
-- [ ] Test edge cases (empty bins, single point, boundary conditions)
+- [x] Write unit tests for utility functions
+- [x] Write integration tests matching Python test cases
+- [x] Test edge cases (empty bins, single point, boundary conditions)
 
 ### 1.6 Performance Optimization
-- [ ] Profile Rust implementation
-- [ ] Use `#[inline]` for hot paths
-- [ ] Consider SIMD optimizations for distance calculations
-- [ ] Optimize memory layout for cache efficiency
+- [x] Profile Rust implementation
+- [x] Use `#[inline]` for hot paths
+- [ ] Consider SIMD optimizations for distance calculations (future enhancement)
+- [x] Optimize memory layout for cache efficiency
 
 ---
 
-## Phase 2: Python Bindings with PyO3/Maturin
+## Phase 2: Python Bindings with PyO3/Maturin ✅
 **Goal:** Expose Rust functionality to Python with zero-copy NumPy integration
 
 ### 2.1 Maturin Setup
-- [ ] Add `pyo3` dependency to `Cargo.toml` with `extension-module` feature
-- [ ] Create `pyproject.toml` with maturin build backend
-- [ ] Configure package metadata (name, version, authors, description)
+- [x] Add `pyo3` dependency to `Cargo.toml` with `extension-module` feature
+- [x] Create `pyproject.toml` with maturin build backend
+- [x] Configure package metadata (name, version, authors, description)
 
 ### 2.2 Python Bindings
-- [ ] Implement `#[pyclass]` wrapper for `PointBin3D`:
+- [x] Implement `#[pyclass]` wrapper for `PointBin3D`:
   - Use `numpy` crate for array conversions
   - Handle `PyArray` for NumPy compatibility
   - Implement zero-copy views where possible
-- [ ] Expose constructor accepting NumPy arrays:
+- [x] Expose constructor accepting NumPy arrays:
   - `__init__(points: np.ndarray, bin_widths: np.ndarray)`
-- [ ] Expose methods as `#[pymethods]`:
+- [x] Expose methods as `#[pymethods]`:
   - `radius_search(query_point: np.ndarray, radius: float)`
   - `found_indices() -> np.ndarray`
   - `reset()`
-- [ ] Add Python docstrings to all exposed functions
-- [ ] Implement `__repr__` and `__str__` for debugging
+- [x] Add Python docstrings to all exposed functions
+- [x] Implement `__repr__` and `__str__` for debugging
 
 ### 2.3 Type Safety & Error Handling
-- [ ] Validate input dimensions (3D points)
-- [ ] Handle dimension mismatches with clear error messages
-- [ ] Use `PyResult` for fallible operations
-- [ ] Add runtime checks for array shapes
+- [x] Validate input dimensions (3D points)
+- [x] Handle dimension mismatches with clear error messages
+- [x] Use `PyResult` for fallible operations
+- [x] Add runtime checks for array shapes
 
 ### 2.4 Python Testing
-- [ ] Port existing `run_pointbin_test()` to pytest
-- [ ] Test NumPy array compatibility
-- [ ] Test error handling and edge cases
-- [ ] Compare results with original Python implementation
-- [ ] Test memory safety (no segfaults, proper cleanup)
+- [x] Port existing `run_pointbin_test()` to pytest
+- [x] Test NumPy array compatibility
+- [x] Test error handling and edge cases
+- [x] Compare results with original Python implementation
+- [x] Test memory safety (no segfaults, proper cleanup)
 
 ---
 

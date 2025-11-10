@@ -1,0 +1,43 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "bucket-search"
+version = "0.1.0"
+description = "High-performance 3D spatial indexing with bucket search algorithm"
+authors = [{ name = "bucket-search contributors" }]
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Rust",
+    "Topic :: Scientific/Engineering",
+]
+keywords = ["spatial-indexing", "3d", "point-cloud", "radius-search", "performance"]
+
+[project.urls]
+Repository = "https://github.com/rndubs/bucket-search"
+Issues = "https://github.com/rndubs/bucket-search/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "numpy>=1.20"]
+
+[tool.maturin]
+python-source = "python"
+module-name = "bucket_search._bucket_search"
+features = ["python"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
